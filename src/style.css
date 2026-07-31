@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-blue-50: #F0F6FF;
+  --color-brand-blue-100: #E0EDFF;
+  --color-brand-blue-200: #C7DDFF;
+  --color-brand-blue-300: #9FBEFF;
+  --color-brand-blue-400: #6E96FF;
+  --color-brand-blue-500: #3B66F6;
+  --color-brand-blue-600: #254EDB;
+  --color-brand-blue-700: #1E3A8A;
+  --color-brand-blue-800: #1C3473;
+  --color-brand-blue-900: #182B5C;
+  --color-brand-blue-950: #0F1836;
+
+  --color-brand-emerald-50: #ECFDF5;
+  --color-brand-emerald-100: #D1FAE5;
+  --color-brand-emerald-200: #A7F3D0;
+  --color-brand-emerald-300: #6EE7B7;
+  --color-brand-emerald-400: #34D399;
+  --color-brand-emerald-500: #10B981;
+  --color-brand-emerald-600: #059669;
+  --color-brand-emerald-700: #047857;
+  --color-brand-emerald-800: #065F46;
+  --color-brand-emerald-900: #064E3B;
+  --color-brand-emerald-950: #022C22;
+
+  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Custom Base Rules */
+html {
+  scroll-behavior: smooth;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Custom Components using @apply */
+.btn-primary {
+  @apply inline-flex items-center justify-center px-8 py-4 font-semibold text-white bg-brand-emerald-600 hover:bg-brand-emerald-700 active:bg-brand-emerald-800 rounded-xl shadow-lg shadow-brand-emerald-600/20 hover:shadow-xl hover:shadow-brand-emerald-600/30 transform hover:-translate-y-0.5 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-brand-emerald-300;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center px-8 py-4 font-semibold text-brand-blue-700 bg-brand-blue-50 hover:bg-brand-blue-100 active:bg-brand-blue-200 rounded-xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-brand-blue-200;
+}
+
+.card-premium {
+  @apply bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-slate-200/80 transition-all duration-300;
+}
+
+.badge-premium {
+  @apply inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold tracking-wider uppercase rounded-full;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+/* Pulse Glow Animation */
+@keyframes pulseGlow {
+  0%, 100% { transform: scale(1); box-shadow: 0 10px 15px -3px rgba(5, 150, 105, 0.3), 0 4px 6px -4px rgba(5, 150, 105, 0.3); }
+  50% { transform: scale(1.02); box-shadow: 0 20px 25px -5px rgba(5, 150, 105, 0.5), 0 8px 10px -6px rgba(5, 150, 105, 0.5); }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2.5s infinite;
+}
+
+/* Custom Accordion height transition */
+.accordion-content {
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.accordion-content.active {
+  grid-template-rows: 1fr;
+}
